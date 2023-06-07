@@ -4,7 +4,7 @@ import React from 'react';
 const Home = () => {
     return (
         <main role='main'>
-            There will be home content
+            There will be home page content
         </main>
     );
 };
