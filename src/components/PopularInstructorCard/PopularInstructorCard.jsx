@@ -2,13 +2,13 @@
 import React from 'react';
 
 const PopularInstructorCard = ({ popularInstructor }) => {
-    const { instructorName, instructorImage, instructorEmail, nameOfClasses, numberOfStudents } = popularInstructor;
+    const { name, image, email, nameOfClasses, numberOfStudents } = popularInstructor;
     return (
         <article className="card p-3 dark:bg-base-100 border shadow-xl hover:scale-110">
-            <h2 className="card-title pb-5">Instructor: {instructorName}</h2>
-            <figure><img src={instructorImage} alt="instructor image" /></figure>
+            <h2 className="card-title pb-5">Instructor: {name}</h2>
+            <figure><img src={image} alt="instructor image" /></figure>
             <div className="card-body px-3">
-                <p><strong>Email:</strong> {instructorEmail}</p>
+                <p><strong>Email:</strong> {email}</p>
                 <section className='mt-2'>
                     <h3 className='font-bold'>Class</h3>
                     <p>{nameOfClasses[0]}</p>

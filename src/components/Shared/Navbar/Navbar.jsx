@@ -1,15 +1,15 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     const navOptions = <>
-        <li><NavLink className={({ isActive }) => { isActive ? "bg-transparent font-bold text-black underline": "bg-transparent text-black"}} to='/'>Home</NavLink></li>
-        <li><NavLink className={({ isActive }) => { isActive ? "bg-transparent text-black underline": "bg-transparent text-black"}} to='/'>Instructors</NavLink></li>
-        <li><NavLink className={({ isActive }) => { isActive ? "bg-transparent text-black underline": "bg-transparent text-black"}} to='/'>Classes</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "bg-transparent text-black underline underline-offset-8" : "bg-transparent text-black"} to='/'>Home</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "bg-transparent text-black underline underline-offset-8" : "bg-transparent text-black"} to='/login'>Instructors</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "bg-transparent text-black underline underline-offset-8" : "bg-transparent text-black"} to='/registration'>Classes</NavLink></li>
     </>
     return (
-        <nav>
+        <nav className='border border-b-slate-700'>
             <div className="navbar bg-transparent dark:bg-transparent dark:text-white">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -22,13 +22,13 @@ const Navbar = () => {
                     </div>
                     <a className="btn btn-ghost normal-case text-xl">Shutter Safari</a>
                 </div>
-                <div className="navbar-center hidden lg:flex">
+                <div className="navbar-center hidden bg-transparent lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {navOptions}
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    <Link className='btn' to='/login'>Login</Link>
                 </div>
             </div>
         </nav>
