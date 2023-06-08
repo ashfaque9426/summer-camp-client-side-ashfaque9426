@@ -8,8 +8,7 @@ const PopularClasses = () => {
     useEffect(() => {
         axios('http://localhost:5000/popularClasses')
             .then(data => {
-                console.log(data.data)
-                setPopularClasses(data.data)
+                setPopularClasses(data.data);
             })
     }, [])
     return (
