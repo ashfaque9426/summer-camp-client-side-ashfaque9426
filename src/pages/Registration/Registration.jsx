@@ -7,7 +7,7 @@ const Registration = () => {
     const { register, handleSubmit, getValues, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
     return (
-        <main className='mt-36 mb-48 2xl:my-0 h-[calc(100vh-10vh)]'>
+        <main className='mt-36 mb-48 2xl:my-0  2xl:pb-16 h-[calc(100vh-10vh)]'>
             <section className='flex flex-col justify-center items-center h-[100%]'>
                 <h2 className='text-2xl text-center my-5 font-bold'>Please Register Here</h2>
                 <div className='card md:w-1/2 max-w-sm shadow-2xl mx-auto py-10 px-7 border border-gray-500 rounded-xl'>
