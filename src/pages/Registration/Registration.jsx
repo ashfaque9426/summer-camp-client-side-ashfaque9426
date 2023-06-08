@@ -6,7 +6,19 @@ import { Link } from 'react-router-dom';
 
 const Registration = () => {
     const { register, handleSubmit, getValues, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        // console.log(data)
+        const registerToServer = {
+            image: '',
+            name: data.name,
+            email: data.email,
+            numberOfClasses: 0,
+            nameOfClasses: [],
+            numberOfStudents: 0,
+            role: "student"
+        }
+        console.log(registerToServer);
+    };
     return (
         <main className='mt-36 mb-48 2xl:my-0  2xl:pb-16 h-[calc(100vh-10vh)]'>
             <Helmet>
