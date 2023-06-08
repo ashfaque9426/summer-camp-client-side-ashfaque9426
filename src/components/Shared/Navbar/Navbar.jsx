@@ -5,8 +5,8 @@ import { Link, NavLink } from 'react-router-dom';
 const Navbar = () => {
     const navOptions = <>
         <li><NavLink className={({ isActive }) => isActive ? "bg-transparent text-black underline underline-offset-8" : "bg-transparent text-black"} to='/'>Home</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? "bg-transparent text-black underline underline-offset-8" : "bg-transparent text-black"} to='/login'>Instructors</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? "bg-transparent text-black underline underline-offset-8" : "bg-transparent text-black"} to='/registration'>Classes</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "bg-transparent text-black underline underline-offset-8" : "bg-transparent text-black"} to='/instructors'>Instructors</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? "bg-transparent text-black underline underline-offset-8" : "bg-transparent text-black"} to='/classes'>Classes</NavLink></li>
     </>
     return (
         <nav className='border border-b-slate-700'>
