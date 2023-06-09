@@ -4,7 +4,7 @@ import React from 'react';
 const ManageUsers = () => {
     return (
         <main role='main'>
-            
+            <h2 className='text-3xl font-semibold text-center my-20'>Manage Users</h2>
         </main>
     );
 };

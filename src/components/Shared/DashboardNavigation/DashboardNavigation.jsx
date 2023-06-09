@@ -1,14 +1,73 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
+import useAuth from '../../../hooks/useAuth';
+import { toast } from 'react-toastify';
+import useAdmin from '../../../hooks/useAdmin';
+import { NavLink, useNavigate } from 'react-router-dom';
+import useInstructor from '../../../hooks/useInstructor';
+import useStudent from '../../../hooks/useStudent';
 
 const DashboardNavigation = () => {
     const [navbar, setNavbar] = useState(false);
+    const { user, logOut } = useAuth();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+    const [isStudent] = useStudent();
+    const navigate = useNavigate();
+    const hangleLogout = () => {
+        logOut()
+        .then(() => {
+            toast('logout successfull');
+            navigate('/', {replace: true});
+        })
+    }
+    const navOptions = <>
+        {
+            user && isAdmin && <>
+                <li className="text-black">
+                    <NavLink className={({isActive}) => isActive ? "underline underline-offset-8" : ""} to="/" >Home</NavLink>
+                </li>
+                <li className="text-black">
+                    <NavLink className={({isActive}) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/manageClasses" >Manage Classes</NavLink>
+                </li>
+                <li className="text-black">
+                    <NavLink className={({isActive}) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/manageUsers" >Manage Users</NavLink>
+                </li>
+            </>
+        }
+        {
+            user && isInstructor && <>
+                <li className="text-black">
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/" >Home</NavLink>
+                </li>
+                <li className="text-black">
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/addAClass" >Add A Class</NavLink>
+                </li>
+                <li className="text-black">
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/myClasses" >My Classes</NavLink>
+                </li>
+            </>
+        }
+        {
+            user && isStudent && <>
+                <li className="text-black">
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/" >Home</NavLink>
+                </li>
+                <li className="text-black">
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/myEnrolledClasses" >Enrolled Classes</NavLink>
+                </li>
+                <li className="text-black">
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/mySelectedClasses" >Selected Classes</NavLink>
+                </li>
+            </>
+        }
+    </>
     return (
         <nav className="w-full bg-white shadow">
             <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
                 <div>
                     <div className="flex items-center justify-between py-3 md:py-5 md:block">
-                        <a href="javascript:void(0)">
+                        <a href="#">
                             <h2 className="text-2xl font-bold text-black">Shutter Safari</h2>
                         </a>
                         <div className="md:hidden">
@@ -54,19 +113,8 @@ const DashboardNavigation = () => {
                         className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
                             }`}
                     >
-                        <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-                            <li className="text-black hover:text-indigo-200">
-                                <a href="#">Home</a>
-                            </li>
-                            <li className="text-black hover:text-indigo-200">
-                                <a href="#">Blog</a>
-                            </li>
-                            <li className="text-black hover:text-indigo-200">
-                                <a href="#">About US</a>
-                            </li>
-                            <li className="text-black hover:text-indigo-200">
-                                <a href="#">Contact US</a>
-                            </li>
+                        <ul className="items-center justify-center space-y-4 md:flex md:space-x-6 md:space-y-0 text-center">
+                            {navOptions}
                         </ul>
 
                         <div className="mt-3 space-y-2 lg:hidden md:inline-block">
@@ -80,6 +128,7 @@ const DashboardNavigation = () => {
                 </div>
                 <div className="hidden space-x-2 md:inline-block">
                     <button
+                        onClick={hangleLogout}
                         className="px-4 py-2 text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
                     >
                         Logout
