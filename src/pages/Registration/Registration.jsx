@@ -2,23 +2,53 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import { saveUser } from '../../apis/authFuncs';
+import { toast } from 'react-toastify';
 
 const Registration = () => {
+    const { createUser, updateUserProfile, logOut } = useAuth();
+    const navigate = useNavigate();
+
     const { register, handleSubmit, getValues, formState: { errors } } = useForm();
     const onSubmit = data => {
-        // console.log(data)
-        const registerToServer = {
-            image: '',
-            name: data.name,
-            email: data.email,
-            numberOfClasses: 0,
-            nameOfClasses: [],
-            numberOfStudents: 0,
-            role: "student"
-        }
-        console.log(registerToServer);
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_KEY}`;
+
+        fetch(url, {method: "POST", body: formData})
+        .then(res => res.json())
+        .then(imgData => {
+            const imgUrl = imgData.data.display_url;
+            const registerToServer = {
+                image: imgUrl,
+                name: data.name || 'unknown name',
+                email: data.email,
+                numberOfClasses: 0,
+                nameOfClasses: [],
+                numberOfStudents: 0,
+                role: "student"
+            }
+            console.log(registerToServer, data);
+            createUser(data.email, data.password)
+            .then(result => {
+                if(result) {
+                    updateUserProfile(data.name, imgUrl)
+                    .then(() => {
+                        toast('User created and user profile updated');
+                        saveUser(registerToServer);
+                    })
+                    logOut()
+                    .then(() => navigate('/login', { replace: true }))
+                }
+            })
+            .catch(error => console.log(error.message));
+        })
+        .catch(error => console.log(error.message));
     };
+
     return (
         <main className='mt-36 mb-48 2xl:my-0  2xl:pb-16 h-[calc(100vh-10vh)]'>
             <Helmet>
@@ -62,10 +92,10 @@ const Registration = () => {
                             {errors.confirmPassword && <span>{errors.confirmPassword.message}</span>}
                         </section>
 
-                        <section className='flex flex-col space-y-2 h-24'>
+                        <section className='flex flex-col space-y-2 h-28'>
                             <label className='font-bold' htmlFor="upload">Upload Image</label>
-                            <input name='image' type='file' className="file-input w-full max-w-xs text-white" id='upload' {...register("image")} />
-                            {errors.confirmPassword && <span>{errors.confirmPassword.message}</span>}
+                            <input name='image' type='file' className="file-input w-full max-w-xs text-white" id='upload' {...register("image", { required: true })} />
+                            {errors.image && <span>Image File is required</span>}
                         </section>
 
                         <p>Already have an account? <Link to='/login' className='underline'>Please Login</Link></p>
