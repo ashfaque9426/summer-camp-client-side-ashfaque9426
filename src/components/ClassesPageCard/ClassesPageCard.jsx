@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 
-const ClassesPageCard = ({ singleClass }) => {
-    const { className, classImage, instructorName, availableSeats, price } = singleClass
+const ClassesPageCard = ({ singleClass, isStudent }) => {
+    const { className, classImage, instructorName, availableSeats, price } = singleClass;
     return (
         <section>
             {
@@ -31,7 +31,7 @@ const ClassesPageCard = ({ singleClass }) => {
 
                         <div className="flex items-center justify-between">
                             <span className="text-3xl font-bold text-gray-900 dark:text-white">${price}</span>
-                            <button disabled={true} className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-black font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-black dark:hover:bg-black dark:focus:ring-black">Select Class</button>
+                                <button disabled={isStudent? !isStudent : isStudent} className="btn text-white bg-black hover:bg-white hover:text-black hover:font-semibold hover:border hover:border-black">Select Class</button>
                         </div>
                     </div>
                 </article>
