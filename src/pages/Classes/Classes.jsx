@@ -11,6 +11,7 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 
 const Classes = () => {
+    const [reloading, setReloading] = useState(false);
     const [allClasses, setAllClasses] = useState([]);
     const [isStudent] = useStudent();
     const {user} = useAuth();
@@ -29,6 +30,7 @@ const Classes = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                setReloading(!reloading);
             }
         })
     }
@@ -39,7 +41,7 @@ const Classes = () => {
         if (isInstructor) toast("Instructors can't select classes");
         axios('http://localhost:5000/allClasses')
         .then(data => setAllClasses(data.data));
-    }, [user, isAdmin, isInstructor]);
+    }, [user, isAdmin, isInstructor, reloading]);
 
     return (
         <section className='md:w-[90%] 2xl:w-[70%] mx-auto my-20'>
