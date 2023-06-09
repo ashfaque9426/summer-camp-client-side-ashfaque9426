@@ -14,6 +14,9 @@ const Navbar = () => {
         <li><NavLink className={({ isActive }) => isActive ? "bg-transparent text-black underline underline-offset-8" : "bg-transparent text-black"} to='/'>Home</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? "bg-transparent text-black underline underline-offset-8" : "bg-transparent text-black"} to='/instructors'>Instructors</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? "bg-transparent text-black underline underline-offset-8" : "bg-transparent text-black"} to='/classes'>Classes</NavLink></li>
+        {
+            user && <li><NavLink className={({ isActive }) => isActive ? "bg-transparent text-black underline underline-offset-8" : "bg-transparent text-black"} to='/dashboard'>Dashboard</NavLink></li>
+        }
     </>
     return (
         <nav className='border border-b-slate-700'>
