@@ -1,8 +1,15 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
+    const {user, logOut} = useAuth();
+    const hangleLogout = () => {
+        logOut()
+        .then(() => toast('logout successfull'))
+    }
     const navOptions = <>
         <li><NavLink className={({ isActive }) => isActive ? "bg-transparent text-black underline underline-offset-8" : "bg-transparent text-black"} to='/'>Home</NavLink></li>
         <li><NavLink className={({ isActive }) => isActive ? "bg-transparent text-black underline underline-offset-8" : "bg-transparent text-black"} to='/instructors'>Instructors</NavLink></li>
@@ -28,7 +35,9 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link className='btn' to='/login'>Login</Link>
+                    {
+                        user ? <button onClick={hangleLogout} className='btn'>Logout</button> : <Link className='btn' to='/login'>Login</Link>
+                    }
                 </div>
             </div>
         </nav>

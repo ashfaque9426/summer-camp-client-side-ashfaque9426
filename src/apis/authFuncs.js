@@ -10,10 +10,10 @@ export const saveUser = userObj => {
     })
     .then(res => res.json())
     .then(data => {
-        if(data) {
-            console.log(data)
-            toast("User saved to the server");
+        if (data.message) {
+            return toast(data.message);
         }
+        toast("User saved to the server");
     })
     .catch(error => console.log(error.message))
 }

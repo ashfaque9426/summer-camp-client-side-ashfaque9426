@@ -51,8 +51,8 @@ const AuthProvider = ({children}) => {
 
     useEffect(()=> {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser);
             if(currentUser) {
-                setUser(currentUser);
                 axios.post('http://localhost:5000/jwt', { email: currentUser?.email })
                 .then(data => {
                     localStorage.setItem('summer-token', data.data);
@@ -62,10 +62,10 @@ const AuthProvider = ({children}) => {
             else {
                 localStorage.removeItem('summer-token');
             }
-
-            return () => unsubscribe();
         });
-    })
+
+        return () => unsubscribe();
+    }, [])
 
     return (
         <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
