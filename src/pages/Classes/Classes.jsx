@@ -34,9 +34,39 @@ const Classes = () => {
     }
 
     useEffect(()=> {
-        if (!user) toast('Please login first to select classes');
-        if(isAdmin) toast('You are an admin so you cant select classes');
-        if (isInstructor) toast("Instructors can't select classes");
+        if (!user) {
+            Swal.fire({
+                title: 'Please Log in first to select the classes',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+        }
+        if(isAdmin) {
+            Swal.fire({
+                title: 'You are an Admin and admin can\'t select classes',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+        }
+        if (isInstructor) {
+            Swal.fire({
+                title: 'Instructors only can add classes and view them.',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+        }
         axios('http://localhost:5000/allClasses')
         .then(data => setAllClasses(data.data));
     }, [user, isAdmin, isInstructor]);
