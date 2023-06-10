@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import PaymentHistoryTableRow from '../../../components/PaymentHistoryTableRow/PaymentHistoryTableRow';
+import { Helmet } from 'react-helmet-async';
 
 const PaymentHistory = () => {
     const [paymentHistory, setPaymentHistory] = useState([]);
@@ -16,6 +17,9 @@ const PaymentHistory = () => {
 
     return (
         <main role='main'>
+            <Helmet>
+                <title>Dashboard | Payment History</title>
+            </Helmet>
             <h2 className='text-3xl font-semibold text-center my-20'>Payment History</h2>
             <section className='text-3xl font-semibold text-center my-20'>
                 {

@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import SelectedClassesTableRow from '../../../components/SelectedClassesTableRow/SelectedClassesTableRow';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const MySelectedClasses = () => {
     const [selectedClasses, setSelectedClasses] = useState([]);
@@ -44,6 +45,9 @@ const MySelectedClasses = () => {
 
     return (
         <main role='main'>
+            <Helmet>
+                <title>Dashboard | Selected Classes</title>
+            </Helmet>
             <h2 className='text-3xl font-semibold text-center my-20'>My Sellected Classes {selectedClasses.length}</h2>
             <div className={selectedClasses.length > 7 ? "h-auto overflow-x-auto mb-20" : "h-[calc(100vh-53vh)] 2xl:h-[calc(100vh-53vh)] mb-20 overflow-x-auto"}>
                 {

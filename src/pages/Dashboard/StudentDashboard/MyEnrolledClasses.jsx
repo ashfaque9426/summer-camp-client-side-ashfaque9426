@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import EnrolledClassesTableRow from '../../../components/EnrolledClassesTableRow/EnrolledClassesTableRow';
+import { Helmet } from 'react-helmet-async';
 
 const MyEnrolledClasses = () => {
     const [enrolledClasses, setEnrolledClasses] = useState([]);
@@ -14,6 +15,9 @@ const MyEnrolledClasses = () => {
     }, [axiosSecure, user])
     return (
         <main role='main'>
+            <Helmet>
+                <title>Dashboard | Enrolled Classes</title>
+            </Helmet>
             <h2 className='text-3xl font-semibold text-center my-20'>My Enrolled Classes</h2>
             <section className={enrolledClasses.length > 7 ? "h-auto overflow-x-auto mb-20" : "h-[calc(100vh-53vh)] 2xl:h-[calc(100vh-53vh)] mb-20 overflow-x-auto"}>
                 {
