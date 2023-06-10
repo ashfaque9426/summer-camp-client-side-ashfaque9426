@@ -47,17 +47,16 @@ const MySelectedClasses = () => {
             <h2 className='text-3xl font-semibold text-center my-20'>My Sellected Classes {selectedClasses.length}</h2>
             <div className={selectedClasses.length > 7 ? "h-auto overflow-x-auto mb-20" : "h-[calc(100vh-53vh)] 2xl:h-[calc(100vh-53vh)] mb-20 overflow-x-auto"}>
                 {
-                    selectedClasses.length > 0 && <table className="table table-auto table-pin-rows table-pin-cols bg-white text-black dark:bg-black dark:text-white text-center">
+                    selectedClasses.length > 0 && <table className="table table-auto bg-white text-black text-center">
                         {/* head */}
                         <thead>
-                            <tr className='text-white'>
+                            <tr className='bg-black text-white'>
                                 <th>#</th>
                                 <th>Class Name</th>
                                 <th>Instructor&apos;s Name</th>
                                 <th>Price</th>
                                 <th>Delete</th>
                                 <th>Pay</th>
-                                <th className='block md:hidden'>scroll left</th>
                             </tr>
                         </thead>
                         <tbody>
