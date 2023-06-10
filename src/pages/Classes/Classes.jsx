@@ -18,7 +18,19 @@ const Classes = () => {
     const [isInstructor] = useInstructor();
     const [axiosSecure] = useAxiosSecure();
     const handleSelection = (id, prefferedClass) => {
-        axiosSecure.post(`/studentsClass/${id}`, prefferedClass)
+        const { _id, classImage, className, instructorEmail, instructorName, availableSeats, numberOfStudents, price, status } = prefferedClass;
+        const newClassInstence = {
+            classId: _id,
+            classImage,
+            className,
+            instructorEmail,
+            instructorName,
+            availableSeats,
+            numberOfStudents,
+            price,
+            status
+        }
+        axiosSecure.post(`/studentsClass/${id}`, newClassInstence)
         .then(data => {
             if (data.data.message) toast(data.data.message);
             if (data.data.insertedId) {
