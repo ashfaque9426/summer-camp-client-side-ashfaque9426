@@ -12,7 +12,7 @@ const Payment = () => {
     const selectedClass = useLoaderData();
     const price = parseFloat(selectedClass.price.toFixed(2));
     return (
-        <main role='main'>
+        <main className='h-[calc(100vh-53vh)] 2xl:h-[calc(100vh-38.5vh)] mb-20' role='main'>
             <Helmet>
                 <title>Shutter Safari | Payment</title>
             </Helmet>

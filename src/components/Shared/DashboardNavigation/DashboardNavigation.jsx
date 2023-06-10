@@ -59,6 +59,9 @@ const DashboardNavigation = () => {
                 <li className="text-black">
                     <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/mySelectedClasses" >Selected Classes</NavLink>
                 </li>
+                <li className="text-black">
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/paymentHistory" >Payment History</NavLink>
+                </li>  
             </>
         }
     </>

@@ -67,7 +67,7 @@ const CheckoutForm = ({ selectedClass ,price }) => {
             setTransactionId(paymentIntent.id);
             const payment = {
                 email: user?.email, transactionId: paymentIntent.id, price, className: selectedClass.className, classId: selectedClass.classId, instructorEmail: selectedClass.instructorEmail
-                , studentEmail: selectedClass.email, status: "paid" }
+                , studentEmail: selectedClass.email, status: "paid", date: new Date() }
             axiosSecure.post('/payments', payment)
             .then(res => {
                 // console.log(res);
@@ -89,7 +89,7 @@ const CheckoutForm = ({ selectedClass ,price }) => {
 
     return (
         <>
-            <form className='w-2/3 m-8' onSubmit={handleSubmit}>
+            <form className='w-2/3 md:w-1/3 m-8' onSubmit={handleSubmit}>
                 <CardElement
                     options={{
                         style: {
