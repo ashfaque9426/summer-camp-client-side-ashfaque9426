@@ -25,7 +25,7 @@ const ManageUsers = () => {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Your work has been saved',
+                    title: 'User Role Updated',
                     showConfirmButton: false,
                     timer: 1500
                 });
