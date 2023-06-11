@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet-async';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import AllClassesTableRow from '../../../components/AllClassesTableRow/AllClassesTableRow';
+import Swal from 'sweetalert2';
 
 const ManageClasses = () => {
     const {user} = useAuth();
@@ -16,6 +17,23 @@ const ManageClasses = () => {
             return response.data;
         }
     });
+
+    const handleStatus = (id, statusState) => {
+        axiosSecure.patch(`/updateStatus/${id}/${user?.email}/${statusState}`)
+        .then(data => {
+            if(data.data.modifiedCount > 0) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: `Status updated to ${statusState}`,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                refetch();
+            }
+        })
+    }
+
     return (
         <main role='main'>
             <Helmet>
@@ -43,7 +61,7 @@ const ManageClasses = () => {
                         </thead>
                         <tbody>
                             {
-                                allClassesForAdmin.map((instructorClass, index) => <AllClassesTableRow key={instructorClass._id} index={index} instructorClass={instructorClass} />)
+                                allClassesForAdmin.map((instructorClass, index) => <AllClassesTableRow key={instructorClass._id} index={index} instructorClass={instructorClass} handleStatus={handleStatus} />)
                             }
 
                         </tbody>
