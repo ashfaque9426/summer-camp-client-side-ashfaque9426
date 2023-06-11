@@ -6,7 +6,7 @@ const EnrolledClassesTableRow = ({ enrolledClass, index }) => {
     return (
         <tr className='bg-white text-black'>
             <th>{index + 1}</th>
-            <th className='flex justify-center'><img className='w-1/2 h-12 object-cover' src={classImage} alt="Class Image" /></th>
+            <th className='flex justify-center'><img className='w-full md:w-1/2 2xl:w-[30%] h-12 2xl:h-16 object-cover' src={classImage} alt="Class Image" /></th>
             <td className='font-semibold'>{className}</td>
             <td className='font-semibold'>{instructorName}</td>
             <td className='font-semibold'>${price}</td>
