@@ -6,13 +6,13 @@ const MyClassesTableRow = ({ myClass, index}) => {
     return (
         <tr className='bg-white text-black'>
             <th>{index + 1}</th>
-            <th className='flex justify-center'><img className='w-full md:w-1/2 2xl:w-[30%] h-12 2xl:h-16 object-cover' src={classImage} alt="Class Image" /></th>
+            <th className='flex justify-center'><img className='w-full md:w-1/2 2xl:w-[70%] h-12 2xl:h-16 object-cover' src={classImage} alt="Class Image" /></th>
             <td className='font-semibold'>{className}</td>
             <td className='font-semibold'>{instructorName}</td>
             <td className='font-semibold'>{instructorEmail}</td>
             <td className='font-semibold'>{status}</td>
             <td className='font-semibold'>{numberOfStudents}</td>
-            <td className='font-semibold'>{myClass?.feeback? myClass.feeback : "No Feedback"}</td>
+            <td className='font-semibold'>{myClass?.feedback? myClass.feedback.slice(0, 50) + "..." : "No Feedback"}</td>
             <td className='font-semibold'><button className='btn btn-sm'>Update</button></td>
         </tr>
     );

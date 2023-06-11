@@ -63,7 +63,6 @@ const ManageClasses = () => {
                             {
                                 allClassesForAdmin.map((instructorClass, index) => <AllClassesTableRow key={instructorClass._id} index={index} instructorClass={instructorClass} handleStatus={handleStatus} />)
                             }
-
                         </tbody>
                     </table>
                 }
