@@ -6,7 +6,7 @@ import PopularClassCard from '../../components/PopularClassCard/PopularClassCard
 const PopularClasses = () => {
     const [popularClasses, setPopularClasses] = useState([]);
     useEffect(() => {
-        axios('http://localhost:5000/popularClasses')
+        axios('https://b7a12-summer-camp-server-side-ashfaque9426.vercel.app/popularClasses')
             .then(data => {
                 setPopularClasses(data.data);
             })

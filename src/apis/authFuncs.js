@@ -1,7 +1,7 @@
 import { toast } from "react-toastify"
 
 export const saveUser = userObj => {
-    fetch('http://localhost:5000/newUser', {
+    fetch('https://b7a12-summer-camp-server-side-ashfaque9426.vercel.app/newUser', {
         method: "POST",
         headers: {
             'content-type': "application/json",

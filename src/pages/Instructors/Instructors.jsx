@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet-async';
 const Instructors = () => {
     const [instructors, setInstructors] = useState([]);
     useEffect(() => {
-        axios('http://localhost:5000/instructors')
+        axios('https://b7a12-summer-camp-server-side-ashfaque9426.vercel.app/instructors')
         .then(data => {
             setInstructors(data.data);
         })

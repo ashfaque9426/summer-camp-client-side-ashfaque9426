@@ -79,7 +79,7 @@ const Classes = () => {
                 }
             })
         }
-        axios('http://localhost:5000/allClasses')
+        axios('https://b7a12-summer-camp-server-side-ashfaque9426.vercel.app/allClasses')
         .then(data => setAllClasses(data.data));
     }, [user, isAdmin, isInstructor]);
 

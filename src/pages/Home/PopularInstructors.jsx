@@ -6,7 +6,7 @@ import PopularInstructorCard from '../../components/PopularInstructorCard/Popula
 const PopularInstructors = () => {
     const [popularInstructors, setPopularInstructors] = useState([]);
     useEffect(()=> {
-        axios('http://localhost:5000/popularInstructors')
+        axios('https://b7a12-summer-camp-server-side-ashfaque9426.vercel.app/popularInstructors')
             .then(data => setPopularInstructors(data.data));
     }, [])
     return (

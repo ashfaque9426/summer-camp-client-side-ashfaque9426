@@ -84,7 +84,7 @@ const router = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <StudentRoute><Payment /></StudentRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/selectedClass/${params.id}`)
+                loader: ({ params }) => fetch(`https://b7a12-summer-camp-server-side-ashfaque9426.vercel.app/selectedClass/${params.id}`)
             },
             {
                 path: 'paymentHistory',
