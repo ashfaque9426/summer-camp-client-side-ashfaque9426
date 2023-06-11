@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
 import Swal from 'sweetalert2';
@@ -9,6 +9,7 @@ const Feedback = () => {
     const id = useParams();
     const [axiosSecure] = useAxiosSecure();
     const {user} = useAuth();
+    const navigate = useNavigate();
     // console.log(id);
     const handleFeedback = e => {
         e.preventDefault();
@@ -24,7 +25,9 @@ const Feedback = () => {
                     title: 'Feedback Added',
                     showConfirmButton: false,
                     timer: 1500
-                })
+                });
+                form.reset();
+                navigate('/dashboard/manageClasses', {replace: true});
             }
         })
     }
