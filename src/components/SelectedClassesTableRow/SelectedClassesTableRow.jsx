@@ -3,10 +3,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SelectedClassesTableRow = ({selectedClass, index, handleDelete}) => {
-    const {_id, className, instructorName, price, email} = selectedClass;
+    const {_id, className, classImage, instructorName, price, email} = selectedClass;
     return (
         <tr className='bg-white text-black'>
             <th>{index + 1}</th>
+            <th className='flex justify-center'><img className='w-1/2 h-12 object-cover' src={classImage} alt="Class Image" /></th>
             <td className='font-semibold'>{className}</td>
             <td className='font-semibold'>{instructorName}</td>
             <td className='font-semibold'>${price}</td>

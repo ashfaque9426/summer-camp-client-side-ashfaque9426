@@ -56,6 +56,7 @@ const MySelectedClasses = () => {
                         <thead>
                             <tr className='bg-black text-white'>
                                 <th>#</th>
+                                <th>Class Image</th>
                                 <th>Class Name</th>
                                 <th>Instructor&apos;s Name</th>
                                 <th>Price</th>
