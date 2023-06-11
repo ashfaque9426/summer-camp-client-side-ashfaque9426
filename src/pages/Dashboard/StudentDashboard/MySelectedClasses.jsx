@@ -49,7 +49,7 @@ const MySelectedClasses = () => {
                 <title>Dashboard | Selected Classes</title>
             </Helmet>
             <h2 className='text-3xl font-semibold text-center my-20'>My Sellected Classes {selectedClasses.length}</h2>
-            <div className={selectedClasses.length > 7 ? "h-auto overflow-x-auto mb-20" : "h-[calc(100vh-53vh)] 2xl:h-[calc(100vh-53vh)] mb-20 overflow-x-auto"}>
+            <section className={selectedClasses.length > 7 ? "h-auto overflow-x-auto mb-20" : "h-[calc(100vh-53vh)] 2xl:h-[calc(100vh-53vh)] mb-20 overflow-x-auto"}>
                 {
                     selectedClasses.length > 0 && <table className="table table-auto bg-white text-black text-center">
                         {/* head */}
@@ -72,7 +72,7 @@ const MySelectedClasses = () => {
                         </tbody>
                     </table>
                 }
-            </div>
+            </section>
         </main>
     );
 };
