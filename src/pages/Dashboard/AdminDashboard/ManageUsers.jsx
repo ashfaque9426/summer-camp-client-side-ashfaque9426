@@ -5,6 +5,7 @@ import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import ManageUsersTableRow from '../../../components/ManageUsersTableRow/ManageUsersTableRow';
+import Swal from 'sweetalert2';
 
 const ManageUsers = () => {
     const {user} = useAuth();
@@ -15,7 +16,24 @@ const ManageUsers = () => {
             const res = await axiosSecure.get(`/getAllUsersForAdmin/${user?.email}`)
             return res.data;
         }
-    })
+    });
+
+    const handleRoleUpdate = (id, addedRole) => {
+        axiosSecure.patch(`/updateRole/${id}/${user?.email}/${addedRole}`)
+        .then(res => {
+            if(res.data.modifiedCount > 0) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                refetch();
+            }
+        })
+    }
+
     return (
         <main role='main'>
             <Helmet>
@@ -39,7 +57,7 @@ const ManageUsers = () => {
                         </thead>
                         <tbody>
                             {
-                                totalUsers.map((userFromAllUsers, index) => <ManageUsersTableRow key={userFromAllUsers._id} index={index} userFromAllUsers={userFromAllUsers} />)
+                                totalUsers.map((userFromAllUsers, index) => <ManageUsersTableRow key={userFromAllUsers._id} index={index} userFromAllUsers={userFromAllUsers} handleRoleUpdate={handleRoleUpdate} />)
                             }
                         </tbody>
                     </table>
