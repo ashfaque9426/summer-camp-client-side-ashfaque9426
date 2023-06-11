@@ -10,12 +10,12 @@ const MyClasses = () => {
     const {user} = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const {data: myClasses = []} = useQuery({
-        queryKey: ['myClasses'],
+        queryKey: ['myClasses', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/getInstructorClasses/${user?.email}`)
             return res.data;
         }
-    })
+    });
     return (
         <main role='main'>
             <Helmet>
