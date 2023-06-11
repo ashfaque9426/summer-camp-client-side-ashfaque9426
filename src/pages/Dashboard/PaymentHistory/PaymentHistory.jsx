@@ -21,7 +21,7 @@ const PaymentHistory = () => {
                 <title>Dashboard | Payment History</title>
             </Helmet>
             <h2 className='text-3xl font-semibold text-center my-20'>Payment History</h2>
-            <section className='text-3xl font-semibold text-center my-20'>
+            <section className={paymentHistory.length > 7 ? "h-auto overflow-x-auto mb-20" : "h-[calc(100vh-53vh)] 2xl:h-[calc(100vh-53vh)] mb-20 overflow-x-auto"}>
                 {
                     paymentHistory.length > 0 && <table className="table table-auto bg-white text-black text-center">
                         <thead>
