@@ -22,6 +22,7 @@ const Navbar = () => {
             user && <li><NavLink className={({ isActive }) => isActive ? "bg-transparent text-black underline underline-offset-8" : "bg-transparent text-black"} to='/dashboard'>Dashboard</NavLink></li>
         }
     </>
+
     return (
         <nav className='border border-b-slate-700'>
             <div className="navbar bg-transparent dark:bg-transparent dark:text-white">
@@ -43,7 +44,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {
-                        user ? <button onClick={hangleLogout} className='btn'>Logout</button> : <Link className='btn' to='/login'>Login</Link>
+                        user ? <><img className=" w-12 h-12 mr-3 rounded-full shadow-lg object-cover" src={user?.photoURL} alt="User Image" /> <button onClick={hangleLogout} className='btn'>Logout</button> </>  : <Link className='btn' to='/login'>Login</Link>
                     }
                 </div>
             </div>
