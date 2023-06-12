@@ -10,8 +10,8 @@ const ManageUsersTableRow = ({ index, userFromAllUsers, handleRoleUpdate }) => {
             <td className='font-semibold'>{name}</td>
             <td className='font-semibold'>{email}</td>
             <td className='font-semibold'>{role}</td>
-            <td className='font-semibold'><button onClick={()=> handleRoleUpdate(_id, 'admin')} disabled={userFromAllUsers?.role !== 'student' ? true : false } className='btn btn-sm'>Make Admin</button></td>
-            <td className='font-semibold'><button onClick={()=> handleRoleUpdate(_id, 'instructor')} disabled={userFromAllUsers?.role !== 'student' ? true : false } className='btn btn-sm'>Make Insturctor</button></td>
+            <td className='font-semibold'><button onClick={()=> handleRoleUpdate(_id, 'admin')} disabled={userFromAllUsers?.role === 'admin' ? true : false } className='btn btn-sm'>Make Admin</button></td>
+            <td className='font-semibold'><button onClick={()=> handleRoleUpdate(_id, 'instructor')} disabled={userFromAllUsers?.role === 'instructor' ? true : false } className='btn btn-sm'>Make Insturctor</button></td>
         </tr>
     );
 };
