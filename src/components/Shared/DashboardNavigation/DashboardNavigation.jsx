@@ -6,6 +6,11 @@ import useAdmin from '../../../hooks/useAdmin';
 import { NavLink, useNavigate } from 'react-router-dom';
 import useInstructor from '../../../hooks/useInstructor';
 import useStudent from '../../../hooks/useStudent';
+import { IoMdCart } from "react-icons/io";
+import { FaBook, FaHome, FaUsersCog } from "react-icons/fa";
+import { GiPayMoney } from "react-icons/gi";
+import { ImDrawer } from "react-icons/im";
+import { AiFillFolderAdd, AiFillFolderOpen } from "react-icons/ai";
 
 const DashboardNavigation = () => {
     const [navbar, setNavbar] = useState(false);
@@ -25,42 +30,42 @@ const DashboardNavigation = () => {
         {
             user && isAdmin && <>
                 <li className="text-black">
-                    <NavLink className={({isActive}) => isActive ? "underline underline-offset-8" : ""} to="/" >Home</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/"><FaHome className='inline-block' /> Home</NavLink>
                 </li>
                 <li className="text-black">
-                    <NavLink className={({isActive}) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/manageClasses" >Manage Classes</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/manageClasses"><ImDrawer className='inline-block' /> Manage Classes</NavLink>
                 </li>
                 <li className="text-black">
-                    <NavLink className={({isActive}) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/manageUsers" >Manage Users</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/manageUsers" ><FaUsersCog className='inline-block' /> Manage Users</NavLink>
                 </li>
             </>
         }
         {
             user && isInstructor && <>
                 <li className="text-black">
-                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/" >Home</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/"><FaHome className='inline-block' /> Home</NavLink>
                 </li>
                 <li className="text-black">
-                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/addAClass" >Add A Class</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/addAClass" ><AiFillFolderAdd className='inline-block' /> Add A Class</NavLink>
                 </li>
                 <li className="text-black">
-                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/myClasses" >My Classes</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/myClasses" ><AiFillFolderOpen className='inline-block' /> My Classes</NavLink>
                 </li>
             </>
         }
         {
             user && isStudent && <>
                 <li className="text-black">
-                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/" >Home</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/"><FaHome className='inline-block' /> Home</NavLink>
                 </li>
                 <li className="text-black">
-                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/myEnrolledClasses" >Enrolled Classes</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/myEnrolledClasses" ><FaBook className='inline-block' /> Enrolled Classes</NavLink>
                 </li>
                 <li className="text-black">
-                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/mySelectedClasses" >Selected Classes</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/mySelectedClasses"><IoMdCart className='inline-block' /> Selected Classes</NavLink>
                 </li>
                 <li className="text-black">
-                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/paymentHistory" >Payment History</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "underline underline-offset-8" : ""} to="/dashboard/paymentHistory"><GiPayMoney className='inline-block' /> Payment History</NavLink>
                 </li>  
             </>
         }
