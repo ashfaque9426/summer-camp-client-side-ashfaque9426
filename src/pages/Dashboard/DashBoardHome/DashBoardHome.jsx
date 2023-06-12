@@ -7,7 +7,7 @@ import dashboardCover from '../../../assets/dashboardImages/dashboardCover.jpg';
 const DashBoardHome = () => {
     const {user} = useAuth();
     return (
-        <main role='main' className=' 2xl:h-[calc(100vh-38vh)] mb-20'>
+        <main role='main' className=' 2xl:h-[calc(100vh-37.5vh)] mb-20'>
             <Helmet>
                 <title>Dashboard | Home</title>
             </Helmet>
