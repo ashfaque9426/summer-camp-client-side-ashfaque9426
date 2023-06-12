@@ -4,6 +4,7 @@ import HomePageSlider from '../../components/HomePageSlider/HomePageSlider';
 import PopularClasses from './PopularClasses';
 import PopularInstructors from './PopularInstructors';
 import { Helmet } from 'react-helmet-async';
+import MyCustomSection from './MyCustomSection';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <HomePageSlider />
             <PopularInstructors />
             <PopularClasses />
+            <MyCustomSection />
         </main>
     );
 };
