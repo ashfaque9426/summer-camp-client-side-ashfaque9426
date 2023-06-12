@@ -6,9 +6,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { toast } from 'react-toastify';
 import { saveUser } from '../../apis/authFuncs';
+import { VscEye } from "react-icons/vsc";
 
 
 const Login = () => {
+    const [showPassword, setShowPassword] = useState(false);
     const [loginErr, setLoginErr] = useState('');
     const { signInWithEP, googleSignIn } = useAuth();
     const location = useLocation();
@@ -75,7 +77,10 @@ const Login = () => {
                         {/* password */}
                         <section className='flex flex-col space-y-2 h-20'>
                             <label className='font-bold' htmlFor="password">Password</label>
-                            <input className='bg-white text-black px-3 py-2 border border-gray-500 rounded-md' type='password' placeholder='password' id='password' {...register("password", { required: true, minLength: 6 })} />
+                            <div className='relative'>
+                                <input className='bg-white text-black px-3 py-2 border border-gray-500 rounded-md w-full' type={showPassword ? 'text' : 'password'} placeholder='password' id='password' {...register("password", { required: true, minLength: 6 })} />
+                                <span onClick={() => setShowPassword(!showPassword)} className=' absolute right-2 text-2xl mt-3'><VscEye /></span>
+                            </div>
                             {errors.password && <span className='text-red-500'>Password required and must be 6 characters</span>}
                         </section>
 
