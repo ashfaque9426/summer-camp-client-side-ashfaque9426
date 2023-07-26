@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import camp1 from '../../assets/bannerImages/camp1.jpg';
+import camp1 from '../../assets/bannerImages/summerCampSliderCover.jpg';
 import camp2 from '../../assets/bannerImages/camp2.jpg';
 import camp3 from '../../assets/bannerImages/camp3.jpg';
 
